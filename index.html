@@ -12,8 +12,8 @@
     </h2>
     <form action="/messages" method="post">
       <p>
-        Name: <input type="text" name="from" placeholder="Your Name" min:"[1]"required/> <br />
-        Message: <input type="text" name="text" placeholder="The message..." /> <br />
+        Name: <input type="text" name="from" placeholder="Your Name" pattern="{string}" required/> <br />
+        Message: <input type="text" name="text" placeholder="The message..." pattern="{string}" required/> <br />
       </p>
       <button type="submit">
         Send
