@@ -15,7 +15,7 @@ const welcomeMessage = {
 //We will start with one message in the array.
 //Note: messages will be lost when Glitch restarts our server.
 const messages = [welcomeMessage]
-//const { check, validationResult } = require('express-validator/check')
+const { check} = require('express-validator/check')
 
 
 
@@ -36,8 +36,14 @@ app.get("/messages/:id", function(request, response){
 });
 
 app.post("/messages",function(request, response){
-  const newMessage =request.body
+  const newMessage =request.body;
+  const name =request.body.input.name;
+  const messageText = request.body.input.messageText;
   newMessage.id= messages.length;
+  let validator = new v( req.body, {
+        email:'required|email',
+        password: 'required'
+    });
   messages.push(newMessage);
   response.status(201).json(newMessage);
   
