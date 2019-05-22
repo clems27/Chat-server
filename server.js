@@ -34,9 +34,7 @@ app.get("/messages/:id", function(request, response){
   response.json(myMessageId);
 });
 
-app.post("/messages", [check("from").isLength({min:3}),
-                      check("text").islength({min:10})
-                      ],function(request, response){
+app.post("/messages",function(request, response){
   const welcomeMessage =request.body
   const from =request.body.from
   const text =request.body.text
