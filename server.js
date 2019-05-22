@@ -36,11 +36,17 @@ app.get("/messages/:id", function(request, response){
 app.post("/messages", function(request, response){
   const welcomeMessage =request.body
   welcomeMessage.id= messages.length;
+  if(welcomeMessage.name.from > 2 && 
+     welcomeMessage.name.text >10){
   messages.push(welcomeMessage);
   response.status(201).json(welcomeMessage);
+  }
+  else{
+    return "Name/ Message must be two character or more"
+  }
 });
 //this is to validate the text field
 function check(){
-  if()
+  check()
 }
 app.listen(process.env.PORT);
