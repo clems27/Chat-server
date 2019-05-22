@@ -36,6 +36,9 @@ app.get("/messages/:id", function(request, response){
 app.post("/messages", function(request, response){
   const welcomeMessage =request.body
   welcomeMessage.id= messages.length;
+  if(name.value >0 != messages.value > 10){
+    
+  }
   messages.push(welcomeMessage);
   response.status(201).json(welcomeMessage);
 });
