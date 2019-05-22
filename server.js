@@ -15,6 +15,7 @@ const welcomeMessage = {
 //Note: messages will be lost when Glitch restarts our server.
 const messages = [welcomeMessage]
 //const { check, validationResult } = require('express-validator/check')
+const { check } = require('express-validator/check')
 
 
 app.get('/', function(request, response) {
@@ -36,17 +37,8 @@ app.get("/messages/:id", function(request, response){
 app.post("/messages", function(request, response){
   const welcomeMessage =request.body
   welcomeMessage.id= messages.length;
-  if(welcomeMessage.name.from > 2 && 
-     welcomeMessage.name.text >10){
   messages.push(welcomeMessage);
   response.status(201).json(welcomeMessage);
-  }
-  else{
-    return "Name/ Message must be two character or more"
-  }
 });
 //this is to validate the text field
-function check(){
-  check()
-}
 app.listen(process.env.PORT);
