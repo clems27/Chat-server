@@ -37,7 +37,7 @@ app.get("/messages/:id", function(request, response){
 
 app.post("/messages",function(request, response){
   const newMessage =request.body
-  newMessage.id= messages.length >2;
+  newMessage.id= messages.length;
   messages.push(newMessage);
   response.status(201).json(newMessage);
   
