@@ -1,4 +1,5 @@
 const express = require("express");
+const expressValidator = require('express-validator');
 const app = express();
 var cors = require('cors');
 app.use(express.urlencoded({ extended: false }));
@@ -15,7 +16,7 @@ const welcomeMessage = {
 //Note: messages will be lost when Glitch restarts our server.
 const messages = [welcomeMessage]
 //const { check, validationResult } = require('express-validator/check')
-const { check } = require('express-validator/check')
+
 
 
 app.get('/', function(request, response) {
@@ -35,9 +36,9 @@ app.get("/messages/:id", function(request, response){
 });
 
 app.post("/messages",function(request, response){
-  const welcomeMessage =request.body
-  const from =request.body.from
-  const text =request.body.text
+  let name = request.body.Name;
+  let newMessage = request.body.Message;
+  const welcomeMessage =request.body;
   welcomeMessage.id= messages.length;
   messages.push(welcomeMessage);
   response.status(201).json(welcomeMessage);
