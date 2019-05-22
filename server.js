@@ -36,12 +36,10 @@ app.get("/messages/:id", function(request, response){
 });
 
 app.post("/messages",function(request, response){
-  let name = request.body.Name;
-  let newMessage = request.body.Message;
-  const welcomeMessage =request.body;
-  welcomeMessage.id= messages.length;
-  messages.push(welcomeMessage);
-  response.status(201).json(welcomeMessage);
+  const newMessage =request.body,{
+  newMessage.id= messages.length;
+  messages.push(newMessage);
+  response.status(201).json(newMessage);
 });
 
 // check =() =>{
