@@ -34,25 +34,20 @@ app.get("/messages/:id", function(request, response){
   response.json(myMessageId);
 });
 
-app.post("/messages", [check("name").isLength({min:3}),
-                      check("message").islength({min:10})
-                      ],(request, response)=>{
+app.post("/messages", [check("from").isLength({min:3}),
+                      check("text").islength({min:10})
+                      ],function(request, response){
   const welcomeMessage =request.body
-  const name =request.body
-  const messageLength =request.body
+  const from =request.body.from
+  const text =request.body.text
   welcomeMessage.id= messages.length;
   messages.push(welcomeMessage);
   response.status(201).json(welcomeMessage);
 });
 
-app.post('/form', [
-  check('name').isLength({ min: 3 }),
-  check('email').isEmail(),
-  check('age').isNumeric()
-], (req, res) => {
-  const name  = req.body.name
-  const email = req.body.email
-  const age   = req.body.age
-})
+// check =() =>{
+  
+// }
+
 //this is to validate the text field
 app.listen(process.env.PORT);
