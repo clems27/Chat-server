@@ -36,14 +36,11 @@ app.get("/messages/:id", function(request, response){
 app.post("/messages", function(request, response){
   const welcomeMessage =request.body
   welcomeMessage.id= messages.length;
-  if(welcomeMessage.from.value != Message.value){
-    messages.push(welcomeMessage);
+  messages.push(welcomeMessage);
   response.status(201).json(welcomeMessage);
-  }
-  else{
-    "error"
-  }
 });
 //this is to validate the text field
-
+function check(){
+  if()
+}
 app.listen(process.env.PORT);
