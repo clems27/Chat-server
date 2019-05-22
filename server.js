@@ -22,8 +22,8 @@ app.get('/', function(request, response) {
 });
 
 // // this will get the array of all messages
-app.get("/messages", function(request, response){
-  response.send(messages)
+ app.get("/messages", function(request, response){
+   response.send(messages)
 })
 
 // // this will get the array of message by id only
@@ -39,7 +39,6 @@ app.post("/messages", function(request, response){
   welcomeMessage.id= messages.length;
   messages.push(welcomeMessage);
   response.status(201).json(welcomeMessage);
-  fromInput.focus();
 });
 //this is to validate the text field
 
