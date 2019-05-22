@@ -35,7 +35,7 @@ app.get("/messages/:id", function(request, response){
 
 app.post("/messages", function(request, response){
   const welcomeMessage =request.body
-  //const { Name, Message } = request.body
+  const
   welcomeMessage.id= messages.length;
   messages.push(welcomeMessage);
   response.status(201).json(welcomeMessage);
