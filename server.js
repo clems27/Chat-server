@@ -37,16 +37,9 @@ app.get("/messages/:id", function(request, response){
 
 app.post("/messages",function(request, response){
   const newMessage =request.body;
-  const name =newMessage.name;
-  const messageText = newMessage.messageText
-  check()if(name <2 && messageText < 10){
     newMessage.id= messages.length;
   messages.push(newMessage);
   response.status(201).json(newMessage);
-  }
-  else{
-    "error"
-  }
 });
 
 // check =() =>{
