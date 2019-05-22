@@ -12,8 +12,8 @@
     </h2>
     <form action="/messages" method="post">
       <p>
-        Name: <input type="text" name="from" placeholder="Your Name" id ="name"  pattern="[a-zA-z], {string}" required /> <br />
-        Message: <input type="text" name="text" placeholder="The message..." id ="messageText"  pattern="[a-zA-z], {2}" required/> <br />
+        Name: <input type="text" name="from" placeholder="Your Name" id ="name"  pattern="[a-zA-z]{string}" required /> <br />
+        Message: <input type="text" name="text" placeholder="The message..." id ="messageText"  pattern="[a-zA-z]{`a`}" required/> <br />
       </p>
       <button type="submit">
         Send
