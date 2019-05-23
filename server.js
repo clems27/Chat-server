@@ -42,6 +42,24 @@ app.post("/messages",function(request, response){
   response.status(201).json(newMessage);
 });
 
+const v = require('node-input-validator');
+ 
+app.post('login', function (req, res) {
+ 
+    let validator = new v( req.body, {
+        email:'required|email',
+        password: 'required'
+    });
+ 
+    validator.check().then(function (matched) {
+        if (!matched) {
+            res.status(422).send(validator.errors);
+        }
+    });
+ 
+})
+
+
 // check =() =>{
   
 // }
