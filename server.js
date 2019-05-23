@@ -1,5 +1,5 @@
 const express = require("express");
-const expressValidator = require('express-validator');
+//const expressValidator = require('express-validator');
 const app = express();
 var cors = require('cors');
 app.use(express.urlencoded({ extended: false }));
@@ -15,9 +15,6 @@ const welcomeMessage = {
 //We will start with one message in the array.
 //Note: messages will be lost when Glitch restarts our server.
 const messages = [welcomeMessage]
-const { check} = require('express-validator/check')
-
-
 
 app.get('/', function(request, response) {
   response.sendFile(__dirname + '/index.html');
