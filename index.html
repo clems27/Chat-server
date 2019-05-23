@@ -29,12 +29,15 @@
   nameInput.addEventListener('keypress', validateName)
 function validateName(){
   const input = nameInput.value
-  console.log(input)
+  const isValid = nameIsValid(input)
+  console.log(isValid)
 }
     function nameIsValid(name){
       if(name.length < 2){
-        
+        return false;
       }
+      const checker = /^[a-zA-Z]+$/
+      return checker.test(name)
     }
   </script>
 </html>
