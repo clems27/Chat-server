@@ -42,12 +42,5 @@ app.post("/messages",function(request, response){
   response.status(201).json(newMessage);
 });
 
-const v = require('node-input-validator');
-
-
-// check =() =>{
-  
-// }
-
 //this is to validate the text field
 app.listen(process.env.PORT);
