@@ -13,6 +13,9 @@
     <form action="/messages" method="post">
       <p>
         Name: <input type="text" name="from" placeholder="Your Name"  id="name-input"/> <br />
+        <div id ="name-error" class="error">
+          
+      </div>
         Message: <input type="text" name="text" placeholder="The message..." id="text-input"/> <br />
       </p>
       <button type="submit">
@@ -26,11 +29,15 @@
   <script>
   const nameInput = document.getElementById("name-input")
     
-  nameInput.addEventListener('keypress', validateName)
+  nameInput.addEventListener('keyup', validateName)
 function validateName(){
   const input = nameInput.value
+  console.log(input)
   const isValid = nameIsValid(input)
   console.log(isValid)
+  const message =document.getElementById("")
+  if(isValid){
+  }
 }
     function nameIsValid(name){
       if(name.length < 2){
