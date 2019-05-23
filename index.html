@@ -23,5 +23,18 @@
     <a href="/messages">See all messages</a>
     
     </body>
-  <script src ="scripts.js"></script>
+  <script>
+  const nameInput = document.getElementById("name-input")
+    
+  nameInput.addEventListener('keypress', validateName)
+function validateName(){
+  const input = nameInput.value
+  console.log(input)
+}
+    function nameIsValid(name){
+      if(name.length < 2){
+        
+      }
+    }
+  </script>
 </html>
