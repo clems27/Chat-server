@@ -42,6 +42,24 @@ app.post("/messages",function(request, response){
   response.status(201).json(newMessage);
 });
 
+app.post('/newMessage', function(req, res) {
+   let name = req.body.name;
+   let messageText = req.body.messageText;
+ 
+   req.checkBody('name', 'Name is required').notEmpty(2);
+   req.checkBody('messageText', 'Bandwidth is required').notEmpty(10);
+
+   var errors = req.validationErrors();
+   if(errors){
+      req.session.errors = errors;
+      req.session.success = false;
+      res.redirect('/');
+   }
+   else{
+      req.session.success = true;
+      res.redirect('/messages');
+   }
+});
 // check =() =>{
   
 // }
