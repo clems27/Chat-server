@@ -43,7 +43,6 @@ function validateName(fieldId, errorId){
   const message =document.getElementById(errorId)
   const sendButton = document.getElementById("button")
   if(isValid){
-    message.innerHTML = "this is valid"
     sendButton.disabled=false
   }
   else{
@@ -52,11 +51,15 @@ function validateName(fieldId, errorId){
   }
 }
     function nameIsValid(name){
-      if(name.length < 2){
+      if(name.length  < 2){
         return false;
       }
+      else{
+        return true
+}
       const checker = /^[a-zA-Z]+$/
       return checker.test(name)
     }
+    
   </script>
 </html>
