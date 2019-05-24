@@ -39,5 +39,10 @@ app.post("/messages",function(request, response){
   response.status(201).json(newMessage);
 });
 
+app.delete("/messages/:id", function(request, response){
+  const inputId = request.params.id
+  messages = messages.filter(message =>message.id != inputId)
+  response.status(204).json(messages)
+})
 //this is to validate the text field
 app.listen(process.env.PORT);
