@@ -12,13 +12,14 @@
     </h2>
     <form action="/messages" method="post">
       <p>
-        Name: <input type="text" name="from" placeholder="Your Name"  id="name-input"/> <br />
-        <p id ="name-error" class="error">   
-      </p>
+        Name: <input type="text" name="from" placeholder="Your Name"  id="name-input" required/> <br />
+        <label id ="name-error" class="error">   
+      </label>
+      
         Message: <input type="text" name="text" placeholder="The message..." id="text-input"/> <br />
-      <div id ="text-error" class="error">
+      <label id ="text-error" class="error">
           
-      </div>
+      </label>
       </p>
       <button type="submit" id="button">
         Send
@@ -50,15 +51,15 @@ function validateName(fieldId, errorId){
     sendButton.disabled=true
   }
 }
-    function nameIsValid(name){
-      if(name.length  < 2){
+    function nameIsValid(name, input){
+      if(name.length){
         return false;
       }
       else{
         return true
 }
-      const checker = /^[a-zA-Z]+$/
-      return checker.test(name).toString()
+      const checker = /^[a-zA-Z]{2,}+$/
+      return checker.test(name)
     }
     
   </script>
