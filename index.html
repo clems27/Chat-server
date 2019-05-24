@@ -13,9 +13,8 @@
     <form action="/messages" method="post">
       <p>
         Name: <input type="text" name="from" placeholder="Your Name"  id="name-input"/> <br />
-        <div id ="name-error" class="error">
-          
-      </div>
+        <p id ="name-error" class="error">   
+      </p>
         Message: <input type="text" name="text" placeholder="The message..." id="text-input"/> <br />
       <div id ="text-error" class="error">
           
@@ -43,6 +42,7 @@ function validateName(fieldId, errorId){
   const message =document.getElementById(errorId)
   const sendButton = document.getElementById("button")
   if(isValid){
+    message.innerHTML = ""
     sendButton.disabled=false
   }
   else{
@@ -58,7 +58,7 @@ function validateName(fieldId, errorId){
         return true
 }
       const checker = /^[a-zA-Z]+$/
-      return checker.test(name)
+      return checker.test(name).toString()
     }
     
   </script>
