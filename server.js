@@ -41,7 +41,7 @@ app.post("/messages",function(request, response){
 
 app.delete("/messages/:id", function(request, response){
   const NewMessage = request.body
-  messages = messages.find(message =>message.id != NewMessage)
+  messages = messages.find(message =>message.id )
   response.status(204).json(messages)
 })
 
@@ -51,5 +51,9 @@ app.get("/messages/latest", function(request, response){
   latest.slice(Math.max(latest.length - 5, 1))
    response.json(latest)
 })
+
+function getLatest(){
+  
+}
 //this is to validate the text field
 app.listen(process.env.PORT);
