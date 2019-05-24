@@ -40,14 +40,14 @@ app.post("/messages",function(request, response){
 });
 
 app.delete("/messages/:id", function(request, response){
-  const inputId = request.params.id
-  messages = messages.filter(message =>message.id != inputId)
+  const NewMessage = request.body
+  messages = messages.find(message =>message.id != NewMessage)
   response.status(204).json(messages)
 })
 
 app.get("/messages/latest", function(request, response){
-  let latest =request.params.body
-  latest.id= messages.length
+  let latest =request.body
+  latest= messages.length
   latest.slice(Math.max(latest.length - 5, 1))
    response.json(latest)
 })
