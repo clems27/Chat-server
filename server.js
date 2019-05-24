@@ -4,6 +4,7 @@ const app = express();
 var cors = require('cors');
 app.use(express.urlencoded({ extended: false }));
 app.use(cors())
+const lodash =require("lodash")
 
 const welcomeMessage = {
   from: "Clement",
@@ -52,8 +53,10 @@ app.get("/messages/latest", function(request, response){
    response.json(latest)
 })
 
-function getLatest(){
-  
+function getLatest(messages, latest){
+ return  messages.filter(messages=>{
+   return
+ })
 }
 //this is to validate the text field
 app.listen(process.env.PORT);

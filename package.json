@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "express": "^4.16.4",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "lodash": "^4.17.11"
   },
   "engines": {
     "node": "8.x"
