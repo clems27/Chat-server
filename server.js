@@ -52,7 +52,8 @@ app.get("/messages/latest", function(request, response){
 })
 
 function getLatest(messages){
- return  messages(messages.length - 5)
+  let latest = messages.length -2
+ return  latest-2
  }
 
 //this is to validate the text field
