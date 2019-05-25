@@ -48,11 +48,11 @@ app.delete("/messages/:id", function(request, response){
 
 app.get("/messages/latest", function(request, response){
   let latest =request.body
-   response.json(getLatest())
+   response.json(getLatest(messages))
 })
 
 function getLatest(messages){
- return  messages.slice(Math.max(messages.length - 5, 1))
+ return  messages(messages.length - 5)
  }
 
 //this is to validate the text field
