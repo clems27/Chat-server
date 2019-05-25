@@ -49,16 +49,17 @@ app.delete("/messages/:id", function(request, response){
 app.get("/messages/search", cors(), function (request, response) {
   let search = request.query.text;
   let filterMessage="Quotes Mentioning ";
+  let message =messages
   response.json([filterMessage.concat(search.charAt(0).toUpperCase() 
                  + search.slice(1).toLowerCase(),":"),
-                findMatchingMessage(messages, search)]);
+                findMatchingMessage(message, search)]);
 });
 
 
 
-function findMatchingMessage(messages, search){
-  return messages.filter(messsage=>{
-    return messages.message.toLowerCase().includes(search.toLowerCase())
+function findMatchingMessage(message, search){
+  return message.filter(messsage=>{
+    return message.message.includes(search) 
   })
 } 
 
