@@ -47,15 +47,14 @@ app.delete("/messages/:id", function(request, response){
 })
 
 app.get("/messages/search",  function (request, response) {
-  let text= request.query.text;
-  response.json(filterMessage(message, text));
+  let search= request.query.text;
+  response.json(filterMessage(messages, search));
 });
 
 
 
-const filterMessage = (arr, text) => {
-  const arr = messges.json
-  return arr.filter(message => message.toLowerCase().indexOf(text.toLowerCase()) !== -1);
+const filterMessage = (messages, search) => {
+  return messages.filter(message => message.toLowerCase().indexOf(search.toLowerCase()));
 };
 
 
