@@ -6,25 +6,25 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors())
 const lodash =require("lodash")
 
-const welcomeMessage = {
-  from: "Clement",
-  text: "Welcome to Freeborn chat system!",
-  id: 0
-}
-
-const welcomeMessage = require("./welcomeMessage.json");
+// const welcomeMessage = {
+//   from: "Clement",
+//   text: "Welcome to Freeborn chat system!",
+//   id: 0
+// }
+const messages = require("./messages.json")
+//const welcomeMessage = require("./welcomeMessage.json");
 //This array is our "data store".
 //We will start with one message in the array.
 //Note: messages will be lost when Glitch restarts our server.
-const messages = [welcomeMessage]
+//const messages = [welcomeMessage.json]
 
 app.get('/', function(request, response) {
   response.sendFile(__dirname + '/index.html');
 });
 
 // // this will get the array of all messages
- app.get("/messages", function(request, response){
-   response.send(messages)
+ app.get("/messages", (cors), function(request, response){
+   response.json(messages)
 })
 
 // // this will get the array of message by id only
