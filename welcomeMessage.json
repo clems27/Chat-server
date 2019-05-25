@@ -1,0 +1,7 @@
+welcomeMessage = [
+      {
+        from: "Clement",
+        text: "Welcome to Freeborn chat system!",
+        id: 0
+      }
+]

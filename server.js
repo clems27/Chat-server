@@ -6,12 +6,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors())
 const lodash =require("lodash")
 
-const welcomeMessage = {
-  from: "Clement",
-  text: "Welcome to Freeborn chat system!",
-  id: 0
-}
 
+const welcomeMessage = require("./welcomeMessage.json");
 //This array is our "data store".
 //We will start with one message in the array.
 //Note: messages will be lost when Glitch restarts our server.
