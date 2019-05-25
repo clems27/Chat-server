@@ -6,24 +6,23 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors())
 const lodash =require("lodash")
 
-// const welcomeMessage = {
-//   from: "Clement",
-//   text: "Welcome to Freeborn chat system!",
-//   id: 0
-// }
-const messages = require("./messages.json")
-//const welcomeMessage = require("./welcomeMessage.json");
+const welcomeMessage = {
+  from: "Clement",
+  text: "Welcome to Freeborn chat system!",
+  id: 0
+}
+
 //This array is our "data store".
 //We will start with one message in the array.
 //Note: messages will be lost when Glitch restarts our server.
-//const messages = [welcomeMessage.json]
+const messages = [welcomeMessage]
 
 app.get('/', function(request, response) {
   response.sendFile(__dirname + '/index.html');
 });
 
 // // this will get the array of all messages
- app.get("/messages", (cors), function(request, response){
+ app.get("/messages", function(request, response){
    response.json(messages)
 })
 
@@ -47,19 +46,19 @@ app.delete("/messages/:id", function(request, response){
   response.status(204).json(messages)
 })
 
-app.get("/messages/search", cors(), function (request, response) {
-  let search = request.query.text;
-  let filterMessage="Quotes Mentioning ";
-  let message =messages
-  response.json([filterMessage.concat(search.charAt(0).toUpperCase() 
-                 + search.slice(1).toLowerCase(),":"),
-                findMatchingMessage(message, search)]);
-});
+// app.get("/messages/search", cors(), function (request, response) {
+//   let search = request.query.text;
+//   let filterMessage="Quotes Mentioning ";
+//   response.json([filterMessage.concat(search.charAt(0).toUpperCase() 
+//                  + search.slice(1).toLowerCase(),":"),
+//                 findMatchingMessage(message, search)]);
+// });
 
 
 
 function findMatchingMessage(message, search){
-  return message.filter(messsage=>{
+  return messages.filter(messsage=>{
+    console.log(message)
     return message.message.includes(search) 
   })
 } 
