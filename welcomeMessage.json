@@ -1,4 +1,4 @@
-welcomeMessage = [
+ [
       {
         from: "Clement",
         text: "Welcome to Freeborn chat system!",
