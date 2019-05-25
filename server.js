@@ -46,15 +46,21 @@ app.delete("/messages/:id", function(request, response){
   response.status(204).json(messages)
 })
 
-app.get("/messages/latest", function(request, response){
-  let latest =request.body
-   response.json(getLatest(messages))
-})
+app.get("/messages/search", cors(), function (request, response) {
+  let search = request.query.text;
+  let filterMessage="Quotes Mentioning ";
+  response.json([filterMessage.concat(search.charAt(0).toUpperCase() 
+                 + search.slice(1).toLowerCase(),":"),
+                findMatchingMessage(messages, search)]);
+});
 
-function getLatest(messages){
-  let latest = messages.length -2
- return  latest-2
- }
+
+
+function findMatchingMessage(messages, search){
+  return messages.filter(messsage=>{
+    return messages.message.toLowerCase().includes(search.toLowerCase())
+  })
+} 
 
 //this is to validate the text field
 app.listen(process.env.PORT);
