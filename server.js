@@ -46,22 +46,18 @@ app.delete("/messages/:id", function(request, response){
   response.status(204).json(messages)
 })
 
-// app.get("/messages/search", cors(), function (request, response) {
-//   let search = request.query.text;
-//   let filterMessage="Quotes Mentioning ";
-//   response.json([filterMessage.concat(search.charAt(0).toUpperCase() 
-//                  + search.slice(1).toLowerCase(),":"),
-//                 findMatchingMessage(message, search)]);
-// });
+app.get("/messages/search",  function (request, response) {
+  let text= request.query.text;
+  response.json(filterMessage(message, text));
+});
 
 
 
-function findMatchingMessage(message, search){
-  return messages.filter(messsage=>{
-    console.log(message)
-    return message.message.includes(search) 
-  })
-} 
+const filterMessage = (arr, text) => {
+  const arr = messges.json
+  return arr.filter(message => message.toLowerCase().indexOf(text.toLowerCase()) !== -1);
+};
+
 
 //this is to validate the text field
 app.listen(process.env.PORT);
