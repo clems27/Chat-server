@@ -54,7 +54,9 @@ app.get("/messages/search",  function (request, response) {
 
 
 const filterMessage = (messages, search) => {
-  return messages.filter(message => message.toLowerCase().includes(search.toLowerCase()));
+  return messages.filter(message => 
+    message.toLowerCase().includes(search.toLowerCase()));
+  
 };
 
 
