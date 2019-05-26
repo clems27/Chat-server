@@ -60,13 +60,8 @@ const filterMessage = (messages, search) => {
 };
 
 app.get("/messages/latest", function(request, response){
-  let latest = request.body;
-  response.json(getLatest)
+  response.json(messages)
 })
 
-function getLatest(){
-    if(messages.length -3)
-      return messages
-}
 //this is to validate the text field
 app.listen(process.env.PORT);
