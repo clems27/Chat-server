@@ -48,9 +48,8 @@ app.delete("/messages/:id", function(request, response){
 })
 
 app.get("/messages/latest", function(request, response){
-  let latest = request.body;
-  messages = [welcomeMessage.slice(-6)]
-  response.send(messages)
+  let lastSeven = welcomeMessage.slice(-3);
+  response.send(lastSeven)
 })
 
 // function getLatestMessages(arr) {
