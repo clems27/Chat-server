@@ -47,21 +47,10 @@ app.delete("/messages/:id", function(request, response){
   response.status(204).json(messages)
 })
 
-app.get("/messages/search",  function (request, response) {
-  let search= request.query.term;
-  response.json(filterMessage(messages, search));
-});
-
-
-
-const filterMessage = (messages, search) => {
-  return messages.filter(message => 
-    message.toLowerCase().includes(search.toLowerCase()));
-  
-};
 app.get("/messages/latest", function(request, response){
-  let latest = welcomeMessage.slice(-5);
-  response.json(latest)
+  let latest = request.body;
+  messages = [welcomeMessage.slice(-6)]
+  response.send(messages)
 })
 
 // function getLatestMessages(arr) {
