@@ -12,6 +12,7 @@ const welcomeMessage = {
   id: 0
 }
 
+
 //This array is our "data store".
 //We will start with one message in the array.
 //Note: messages will be lost when Glitch restarts our server.
@@ -60,7 +61,7 @@ const filterMessage = (messages, search) => {
 };
 
 app.get("/messages/latest", function(request, response){
-  response.json(messages)
+  response.json(welcomeMessage.slice(-6))
 })
 
 //this is to validate the text field
