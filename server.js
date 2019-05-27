@@ -59,10 +59,15 @@ const filterMessage = (messages, search) => {
     message.toLowerCase().includes(search.toLowerCase()));
   
 };
-
 app.get("/messages/latest", function(request, response){
-  response.json(welcomeMessage.slice(-6))
+  let latest = welcomeMessage.slice(-5);
+  response.json(latest)
 })
+
+// function getLatestMessages(arr) {
+//   return
+  
+// }
 
 //this is to validate the text field
 app.listen(process.env.PORT);
