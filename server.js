@@ -47,11 +47,9 @@ app.delete("/messages/:id", function(request, response){
   response.status(204).json(messages)
 })
 
-app.get("/messages/latest", function(request, response){
-  messages = welcomeMessage
-if(messages.length){
-    return messages.slice(-2)
-}
+app.get("/messages/latest", function(request, response){ 
+  const latest =request.body;
+  latest =
   response.send(messages)
 })
 //this is to validate the text field
