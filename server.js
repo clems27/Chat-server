@@ -48,9 +48,8 @@ app.delete("/messages/:id", function(request, response){
 })
 
 app.get("/messages/latest", function(request, response){ 
-  const latest =request.body;
-  latest =
-  response.send(messages)
+  const latest =messages.length -2
+  response.json(latest)
 })
 //this is to validate the text field
 app.listen(process.env.PORT);
