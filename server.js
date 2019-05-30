@@ -24,32 +24,31 @@ app.get('/', function(request, response) {
 
 // // this will get the array of all messages
  app.get("/messages", function(request, response){
-   response.json(messages)
-})
+  response.json(messages)
+ })
+  // this will get the array of message by id only
+ app.get("/messages/:id", function(request, response){
+   const id =request.params.id
+    const myMessageId =messages.filter(message=> message.id ==id)
+  //response.send(myMessageId);
+ });
 
-// // this will get the array of message by id only
-app.get("/messages/:id", function(request, response){
-  const id =request.params.id
-  const myMessageId =messages.filter(message=> message.id ==id)
-  response.json(myMessageId);
-});
+// app.post("/messages",function(request, response){
+//   const newMessage =request.body;
+//     newMessage.id= messages.length;
+//   messages.push(newMessage);
+//   response.status(201).json(newMessage);
+// });
 
-app.post("/messages",function(request, response){
-  const newMessage =request.body;
-    newMessage.id= messages.length;
-  messages.push(newMessage);
-  response.status(201).json(newMessage);
-});
-
-app.delete("/messages/:id", function(request, response){
-  const NewMessage = request.body
-  messages = messages.find(message =>message.id )
-  response.status(204).json(messages)
-})
+// app.delete("/messages/:id", function(request, response){
+//   const NewMessage = request.body
+//   messages = messages.find(message =>message.id )
+//   response.status(204).json(messages)
+// })
 
 app.get("/messages/latest", function(request, response){ 
   //const latest =messages
-  response.json(messages.slice(-2))
+  response.json(messages)
 })
 //this is to validate the text field
 app.listen(process.env.PORT);
