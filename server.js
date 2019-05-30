@@ -20,72 +20,86 @@ const messages = [
     {
         from: "Clement",
         text: "Welcome to Freeborn chat system!",
-        id: 0
+        id: 0,
+        timeStamp: new Date()
     },
     {
         from: "mark",
         text: "Hello",
-        id: 1
+        id: 1,
+         timeStamp: new Date()
     },
     {
         from: "clement",
         text: "welcome",
-        id: 2
+        id: 2,
+        timeStamp: new Date()
     },
     {
         from: "mark",
         text: "long time",
-        id: 3
+        id: 3,
+        timeStamp: new Date()
     },
     {
         from: "clement",
         text: "yeah, indeed",
-        id: 4
+        id: 4,
+        timeStamp: new Date()
     },
     {
         from: "mark",
         text: "real good to be hear",
-        id: 5
+        id: 5,
+        timeStamp: new Date()
     },
     {
         from: "clement",
         text: "you looking good",
-        id: 6
+        id: 6,
+        timeStamp: new Date()
     },
     {
         from: "mark",
         text: "Hello",
-        id: 7
+        id: 7,
+        timeStamp: new Date()
     },
     {
         from: "clement",
         text: "welcome",
-        id: 8
+        id: 8,
+        timeStamp: new Date()
     },
     {
         from: "mark",
         text: "long time",
-        id: 9
+        id: 9,
+        timeStamp: new Date()
     },
     {
         from: "clement",
         text: "yeah, indeed",
-        id: 10
+        id: 10,
+        timeStamp: new Date()
     },
     {
         from: "clement",
         text: "welcome",
-        id: 11
+        id: 11,
+        timeStamp: new Date()
     },
     {
         from: "mark",
         text: "long time",
-        id: 12
+        id: 12,
+        timeStamp: new Date()
     },
     {
         from: "clement",
         text: "yeah, indeed",
-        id: 13
+        id: 13,
+        timeStamp: new Date()
     }
 ]
 
@@ -111,10 +125,12 @@ app.get("/messages/latest", function(request, response){
  app.post("/messages",function(request, response){
    const newMessage =request.body;
    newMessage.id= messages.length;
+   newMessage.timeStamp = new Date()
    messages.push(newMessage);
  response.status(201).json(newMessage);
 });
 
+app.put()
 // app.delete("/messages/:id", function(request, response){
 //   const NewMessage = request.body
 //   messages = messages.find(message =>message.id )
