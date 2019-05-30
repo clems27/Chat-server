@@ -134,11 +134,11 @@ app.put("/messages/:id", function(request, response){
   const id =request.params.id
   const newMessage =request.body;
   const myMessage =messages.filter(message=> message.id ==id);
-  // newMessage.id = myMessage.id
-  // newMessage.timeStamp = myMessage.timeStamp
-   myMessage.from =newMessage.from
-  myMessage.text =newMessage.text
-  response.json(myMessage)
+   newMessage.id = myMessage.id
+   newMessage.timeStamp = myMessage.timeStamp
+  //  myMessage.from =newMessage.from
+  // myMessage.text =newMessage.text
+  response.json(newMessage)
   
 })
 // app.delete("/messages/:id", function(request, response){
