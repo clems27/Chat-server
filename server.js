@@ -132,13 +132,15 @@ app.get("/messages/latest", function(request, response){
 
 app.put("/messages/:id", function(request, response){
   const id =request.params.id
-  const newMessage =request.body;
-  const myMessage =messages.filter(message=> message.id ==id);
-   newMessage.id = myMessage.id
-   newMessage.timeStamp = myMessage.timeStamp
+  //const updateMessage =request.body;
+  const updateMessage =messages.filter(message=> message.id ==id);
+  updateMessage.from = messages.from
+  updateMessage.text = messages.text
+   updateMessage.id = messages.id
+   updateMessage.timeStamp = messages.timeStamp
   //  myMessage.from =newMessage.from
   // myMessage.text =newMessage.text
-  response.json(newMessage)
+  response.json(updateMessage.id)
   
 })
 // app.delete("/messages/:id", function(request, response){
