@@ -130,20 +130,40 @@ app.get("/messages/latest", function(request, response){
  response.status(201).json(newMessage);
 });
 
-app.put("/messages/:id", function(request, response){
-   const messageId =request.params.id
-   const updateMessage =request.body;
-  updateMessage.id= messages.id;
-  updateMessage.from= messages.from;
-  updateMessage.text= messages.id;
-   const message =messages.filter(message=> message.id ==messageId);
-    //if()
-  // newMessage.text =myMessage.text
-    //newMessage.id = myMessage.id
-  //  newMessage.timeStamp = myMessage.timeStamp
-  response.json(updateMessage)
+// app.put("/messages/:id", function(request, response){
+//    const messageId =request.params.id
+//    const updateMessage =request.body;
+//    const message =messages.filter(message=> message.id ==messageId);
+//     //if()
+//   // newMessage.text =myMessage.text
+//     //newMessage.id = myMessage.id
+//   //  newMessage.timeStamp = myMessage.timeStamp
+//   response.json(updateMessage)
   
-})
+// })
+
+app.put('/contacts/:id', (request, response) => {
+
+  let contactId = request.params.id;
+
+  let message = messages.filter(message => {
+    return message.id == contactId;
+  })[0];
+
+  const index = messages.indexOf(message);
+
+  let keys = Object.keys(request.body);
+
+  keys.forEach(key => {
+    message[key] = request.body[key];
+  });
+
+  messages[index] = message;
+
+  // response.json({ message: `User ${contactId} updated.`});
+  response.json(messages[index]);
+});
+
 // app.delete("/messages/:id", function(request, response){
 //   const NewMessage = request.body
 //   messages = messages.find(message =>message.id )
