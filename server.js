@@ -6,102 +6,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors())
 const lodash =require("lodash")
 
-const welcomeMessage = {
-  from: "Clement",
-  text: "Welcome to Freeborn chat system!",
-  id: 0
-}
+const message = require("./message.json");
+// const welcomeMessage = {
+//   from: "Clement",
+//   text: "Welcome to Freeborn chat system!",
+//   id: 0
+// }
 
 
 //This array is our "data store".
 //We will start with one message in the array.
 //Note: messages will be lost when Glitch restarts our server.
-const messages = [
-    {
-        from: "Clement",
-        text: "Welcome to Freeborn chat system!",
-        id: 0,
-        timeStamp: new Date()
-    },
-    {
-        from: "mark",
-        text: "Hello",
-        id: 1,
-         timeStamp: new Date()
-    },
-    {
-        from: "clement",
-        text: "welcome",
-        id: 2,
-        timeStamp: new Date()
-    },
-    {
-        from: "mark",
-        text: "long time",
-        id: 3,
-        timeStamp: new Date()
-    },
-    {
-        from: "clement",
-        text: "yeah, indeed",
-        id: 4,
-        timeStamp: new Date()
-    },
-    {
-        from: "mark",
-        text: "real good to be hear",
-        id: 5,
-        timeStamp: new Date()
-    },
-    {
-        from: "clement",
-        text: "you looking good",
-        id: 6,
-        timeStamp: new Date()
-    },
-    {
-        from: "mark",
-        text: "Hello",
-        id: 7,
-        timeStamp: new Date()
-    },
-    {
-        from: "clement",
-        text: "welcome",
-        id: 8,
-        timeStamp: new Date()
-    },
-    {
-        from: "mark",
-        text: "long time",
-        id: 9,
-        timeStamp: new Date()
-    },
-    {
-        from: "clement",
-        text: "yeah, indeed",
-        id: 10,
-        timeStamp: new Date()
-    },
-    {
-        from: "clement",
-        text: "welcome",
-        id: 11,
-        timeStamp: new Date()
-    },
-    {
-        from: "mark",
-        text: "long time",
-        id: 12,
-        timeStamp: new Date()
-    },
-    {
-        from: "clement",
-        text: "yeah, indeed",
-        id: 13,
-        timeStamp: new Date()
-    }
-]
+//const messages = [message]
 
 app.get('/', function(request, response) {
   response.sendFile(__dirname + '/index.html');
