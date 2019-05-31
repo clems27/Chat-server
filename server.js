@@ -16,7 +16,7 @@ const welcomeMessage = {
 //This array is our "data store".
 //We will start with one message in the array.
 //Note: messages will be lost when Glitch restarts our server.
-const messages = [welcomeMessage]
+const messages = [
     {
         from: "Clement",
         text: "Welcome to Freeborn chat system!",
@@ -145,6 +145,18 @@ function searchMessages(messages, searchTerm){
  response.status(201).json(newMessage);
 });
 
+
+app.put("/messages/:id", function(request, response){
+   const messageId =request.params.id
+   const updateMessage =request.body;
+   const message =messages.filter(message=>message.id ==messageId);
+   
+  // newMessage.text =myMessage.text
+    //newMessage.id = myMessage.id
+  //  newMessage.timeStamp = myMessage.timeStamp
+  response.json(message)
+  
+})
 
 //this will delete message by id
 app.delete('/messages/:id', (request, response) => {
