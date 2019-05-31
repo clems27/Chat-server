@@ -140,13 +140,21 @@ app.get("/messages/latest", function(request, response){
 
 app.put("/messages/:id", function(request, response){
    const messageId =request.params.id
-   const updateMessage =request.body;
-   const message =messages.filter(message=> message.id ==messageId);
+   //const updateMessage =request.body;
+   const message =messages.filter(message=> {
+     return message.id ==messageId
+   })[0];
+  const index = messages.indexOf(message);
+  let keys = Object.keys(request.body);
+  keys.forEach(key =>{
+    message[key] = request.body[key];
+  })
+  messages[index]= message;
     //if()
   // newMessage.text =myMessage.text
     //newMessage.id = myMessage.id
   //  newMessage.timeStamp = myMessage.timeStamp
-  response.json(message)
+  response.json(messages[index]);
   
 })
 // app.delete("/messages/:id", function(request, response){
