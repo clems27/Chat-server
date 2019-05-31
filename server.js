@@ -132,7 +132,7 @@ app.get("/messages/latest", function(request, response){
 
 app.put("/messages/:id", function(request, response){
    const messageId =request.params.id
-   //const updateMessage =request.body;
+   const updateMessage =request.body;
    const message =messages.filter(message=> {
      message.id ==messageId
      message.from == messageId
