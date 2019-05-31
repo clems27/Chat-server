@@ -146,26 +146,26 @@ function searchMessages(messages, searchTerm){
 });
 
 
-app.put('/api/contacts/:id', (request, response) => {
+app.put('/messages/:id', function(request, response)  {
 
   let contactId = request.params.id;
 
-  let contact = contacts.filter(contact => {
-    return contact.id == contactId;
+  let updateMessage = messages.filter(message => {
+    return message.id == contactId;
   })[0];
 
-  const index = contacts.indexOf(contact);
+  const index = messages.indexOf(updateMessage);
 
   let keys = Object.keys(request.body);
 
   keys.forEach(key => {
-    contact[key] = request.body[key];
+    updateMessage[key] = request.body[key];
   });
 
-  contacts[index] = contact;
+  messages[index] = updateMessage;
 
-  // response.json({ message: `User ${contactId} updated.`});
-  response.json(contacts[index]);
+  // response.json({ message: `message ${contactId} updated.`});
+  response.json(messages[index]);
 });
 
 //this will delete message by id
