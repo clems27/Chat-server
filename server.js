@@ -117,7 +117,7 @@ app.get("/messages/latest", function(request, response){
 })
 
 app.get("/messages/search", function (request, response) {
-  let searchTerm = request.query.term;
+  let searchTerm = request.query.text;
   response.json(searchMessages(messages, searchTerm));
 });
 
@@ -146,9 +146,7 @@ function searchMessages(messages, searchTerm){
 app.put("/messages/:id", function(request, response){
    const messageId =request.params.id
    const updateMessage =request.body;
-   const message =messages.filter(message=>{
-      return message.from ==messageId
-             });
+   const message =messages.filter(message=>message.from ==messageId);
     //if()
   // newMessage.text =myMessage.text
     //newMessage.id = myMessage.id
