@@ -115,6 +115,18 @@ app.get("/messages/latest", function(request, response){
   //const latest =messages
   response.json(messages.slice(-2))
 })
+
+app.get("/messages/search", function (request, response) {
+  let searchTerm = request.query.term;
+  response.json(searchMessages(messages, searchTerm));
+});
+
+function searchMessages(messages, searchTerm){
+  return messages.filter(message=>{
+    return message.from.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      message.text.toLowerCase().includes(searchTerm.toLowerCase()) ;
+  })
+} 
   // this will get the array of message by id only
  app.get("/messages/:id", function(request, response){
    const messageId =request.params.id
@@ -122,17 +134,6 @@ app.get("/messages/latest", function(request, response){
   response.send(myMessage);
  });
 
-app.get("/messages/search", cors(), function (request, response) {
-  let searchTerm = request.query.text;
-  response.json(findMatchingQuotes(messages, searchTerm));
-});
-
-function findMatchingQuotes(quotes, searchTerm){
-  return quotes.filter(quote=>{
-    return quote.quote.toLowerCase().includes(searchTerm.toLowerCase()) || 
-      quote.author.toLowerCase().includes(searchTerm.toLowerCase()) ;
-  })
-} 
 
  app.post("/messages",function(request, response){
    const newMessage =request.body;
