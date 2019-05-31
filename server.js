@@ -117,8 +117,8 @@ app.get("/messages/latest", function(request, response){
 })
   // this will get the array of message by id only
  app.get("/messages/:id", function(request, response){
-   const id =request.params.id
-    const myMessage =messages.filter(message=> message.id ==id);
+   const messageId =request.params.id
+    const myMessage =messages.filter(message=> message.id ==messageId);
   response.send(myMessage);
  });
 
@@ -131,14 +131,18 @@ app.get("/messages/latest", function(request, response){
 });
 
 app.put("/messages/:id", function(request, response){
-   const id =request.params.id
-   const update =request.body;
-   const updateMessage =messages.filter(message=> message.id ==id);
-    if()
+   const messageId =request.params.id
+   //const updateMessage =request.body;
+   const message =messages.filter(message=> {
+     message.id ==messageId
+     message.from == messageId
+     message.text == message
+   });
+    //if()
   // newMessage.text =myMessage.text
     //newMessage.id = myMessage.id
   //  newMessage.timeStamp = myMessage.timeStamp
-  response.json(updateMessage)
+  response.json(message)
   
 })
 // app.delete("/messages/:id", function(request, response){
