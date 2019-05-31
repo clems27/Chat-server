@@ -122,6 +122,18 @@ app.get("/messages/latest", function(request, response){
   response.send(myMessage);
  });
 
+app.get("/messages/search", cors(), function (request, response) {
+  let searchTerm = request.query.text;
+  response.json(findMatchingQuotes(messages, searchTerm));
+});
+
+function findMatchingQuotes(quotes, searchTerm){
+  return quotes.filter(quote=>{
+    return quote.quote.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      quote.author.toLowerCase().includes(searchTerm.toLowerCase()) ;
+  })
+} 
+
  app.post("/messages",function(request, response){
    const newMessage =request.body;
    newMessage.id= messages.length;
@@ -149,7 +161,7 @@ app.put("/messages/:id", function(request, response){
 //   response.status(204).json(messages)
 // })
 
-app.delete('/contacts/:id', (request, response) => {
+app.delete('/messages/:id', (request, response) => {
   
   let contactId = request.params.id;
 
