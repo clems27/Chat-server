@@ -134,9 +134,9 @@ app.put("/messages/:id", function(request, response){
    const id =request.params.id
    const newMessage =request.body;
    const myMessage =messages.filter(message=> message.id ==id);
-   // newMessage.from =myMessage.from
+  //   newMessage.from =myMessage.from
   // newMessage.text =myMessage.text
-  //  newMessage.id = myMessage.id
+    //newMessage.id = myMessage.id
   //  newMessage.timeStamp = myMessage.timeStamp
   response.json(myMessage)
   
