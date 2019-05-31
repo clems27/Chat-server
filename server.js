@@ -1,10 +1,18 @@
-const express = require("express");
-//const expressValidator = require('express-validator');
+// const express = require("express");
+// //const expressValidator = require('express-validator');
+// const app = express();
+// var cors = require('cors');
+// app.use(express.urlencoded({ extended: false }));
+// app.use(cors())
+// const lodash =require("lodash")
+const express = require('express');
 const app = express();
-var cors = require('cors');
-app.use(express.urlencoded({ extended: false }));
-app.use(cors())
-const lodash =require("lodash")
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 const welcomeMessage = {
   from: "Clement",
