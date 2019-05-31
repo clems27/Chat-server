@@ -111,11 +111,13 @@ app.get('/', function(request, response) {
  app.get("/messages", function(request, response){
   response.json(messages)
  })
+
+//this will get the last ten message(as latest message)
 app.get("/messages/latest", function(request, response){ 
-  //const latest =messages
   response.json(messages.slice(-2))
 })
 
+//this will return all messages that includes the search term
 app.get("/messages/search", function (request, response) {
   let searchTerm = request.query.text;
   response.json(searchMessages(messages, searchTerm));
@@ -127,14 +129,14 @@ function searchMessages(messages, searchTerm){
       message.text.toLowerCase().includes(searchTerm.toLowerCase()) ;
   })
 } 
-  // this will get the array of message by id only
+  // this will get message by id only
  app.get("/messages/:id", function(request, response){
    const messageId =request.params.id
     const myMessage =messages.filter(message=> message.id ==messageId);
   response.send(myMessage);
  });
 
-
+//this create a new message
  app.post("/messages",function(request, response){
    const newMessage =request.body;
    newMessage.id= messages.length;
@@ -143,36 +145,19 @@ function searchMessages(messages, searchTerm){
  response.status(201).json(newMessage);
 });
 
-app.put("/messages/:id", function(request, response){
-   const messageId =request.params.id
-   const updateMessage =request.body;
-   const message =messages.filter(message=>message.from ==messageId);
-    //if()
-  // newMessage.text =myMessage.text
-    //newMessage.id = myMessage.id
-  //  newMessage.timeStamp = myMessage.timeStamp
-  response.json(updateMessage)
-  
-})
-// app.delete("/messages/:id", function(request, response){
-//   const NewMessage = request.body
-//   messages = messages.find(message =>message.id )
-//   response.status(204).json(messages)
-// })
-
+//this will delete message by id
 app.delete('/messages/:id', (request, response) => {
-  
   let contactId = request.params.id;
-
   let deletedMessage = messages.filter(message => {
     return message.id == contactId;
-  })[0];
+    response.json(deletedMessage)
+  });
 
   const index = messages.indexOf(welcomeMessage);
 
   messages.splice(index, 1);
 
-  response.json({ message: `User ${contactId} deleted.`});
+  response.json({ message: `message Id ${contactId} deleted.`});
 
 });
 
