@@ -1,18 +1,10 @@
-// const express = require("express");
-// //const expressValidator = require('express-validator');
-// const app = express();
-// var cors = require('cors');
-// app.use(express.urlencoded({ extended: false }));
-// app.use(cors())
-// const lodash =require("lodash")
-const express = require('express');
+const express = require("express");
+//const expressValidator = require('express-validator');
 const app = express();
-const bodyParser = require('body-parser');
-const cors = require('cors');
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+var cors = require('cors');
+app.use(express.urlencoded({ extended: false }));
+app.use(cors())
+const lodash =require("lodash")
 
 const welcomeMessage = {
   from: "Clement",
@@ -140,21 +132,16 @@ app.get("/messages/latest", function(request, response){
 
 app.put("/messages/:id", function(request, response){
    const messageId =request.params.id
-   //const updateMessage =request.body;
-   const message =messages.filter(message=> {
-     return message.id ==messageId
-   })[0];
-  const index = messages.indexOf(message);
-  let keys = Object.keys(request.body);
-  keys.forEach(key =>{
-    message[key] = request.body[key];
-  })
-  messages[index]= message;
+   const updateMessage =request.body;
+  updateMessage.id= messages.id;
+  updateMessage.from= messages.from;
+  updateMessage.text= messages.id;
+   const message =messages.filter(message=> message.id ==messageId);
     //if()
   // newMessage.text =myMessage.text
     //newMessage.id = myMessage.id
   //  newMessage.timeStamp = myMessage.timeStamp
-  response.json(messages[index]);
+  response.json(updateMessage)
   
 })
 // app.delete("/messages/:id", function(request, response){
