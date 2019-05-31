@@ -146,14 +146,27 @@ function searchMessages(messages, searchTerm){
 });
 
 
-app.put("/messages/:id", function(request, response){
-   const messageId =request.params.id
-   const updateMessage =request.body;
-   const message =messages.filter(message=>message.id ==messageId);
-  
-  response.json(message)
-  
-})
+app.put('/api/contacts/:id', (request, response) => {
+
+  let contactId = request.params.id;
+
+  let contact = contacts.filter(contact => {
+    return contact.id == contactId;
+  })[0];
+
+  const index = contacts.indexOf(contact);
+
+  let keys = Object.keys(request.body);
+
+  keys.forEach(key => {
+    contact[key] = request.body[key];
+  });
+
+  contacts[index] = contact;
+
+  // response.json({ message: `User ${contactId} updated.`});
+  response.json(contacts[index]);
+});
 
 //this will delete message by id
 app.delete('/messages/:id', (request, response) => {
