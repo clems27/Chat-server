@@ -5,6 +5,8 @@ var cors = require('cors');
 app.use(express.urlencoded({ extended: false }));
 app.use(cors())
 const lodash =require("lodash")
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({ type: 'application/json' }));
 
 const welcomeMessage = {
   from: "Clement",
