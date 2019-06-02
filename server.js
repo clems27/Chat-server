@@ -1,12 +1,9 @@
 const express = require("express");
-//const expressValidator = require('express-validator');
 const app = express();
 var cors = require('cors');
 app.use(express.urlencoded({ extended: false }));
 app.use(cors())
-//const lodash =require("lodash")
-//var bodyParser = require('body-parser');
-//app.use(bodyParser.json({ type: 'application/json' }));
+
 
 const welcomeMessage = {
   from: "Clement",
@@ -15,7 +12,6 @@ const welcomeMessage = {
 }
 
 let messages = require("./messages.json");
-const { check, validationResult } = require('express-validator/check');
 
 //This array is our "data store".
 //We will start with one message in the array.
@@ -91,7 +87,7 @@ app.delete("/messages/:id", function(request, response){
 const deleteId = request.params.id;
 const foundDeleteId = messages.some(message=>message.id == deleteId)
 if (foundDeleteId){
-  messages = messages.filter(message=>message.id != deleteId);
+  messages = messages.filter(message=>message.id !== deleteId);
   response.json("Selected message has been deleted")  
   } else {
     response.status(400).json({ msg : `No message with the id of ${deleteId}`})
