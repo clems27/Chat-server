@@ -21,8 +21,6 @@ const { check, validationResult } = require('express-validator/check');
 //We will start with one message in the array.
 //Note: messages will be lost when Glitch restarts our server.
 
-console.log(JSON.stringify(messages, null, 4))
-
 app.get('/', function(request, response) {
   response.sendFile(__dirname + '/index.html');
 });
@@ -89,13 +87,13 @@ app.put('/messages/:id', function(request, response)  {
 });
 
 app.delete("/messages/:id", function(request, response){
-const selectedId = request.params.id;
-const found = messages.some(message=>message.id == selectedId)
-if (found){
-  messages = messages.filter(message=>message.id != selectedId);
+const deleteId = request.params.id;
+const foundDeleteId = messages.find(message=>message.id == deleteId)
+if (foundDeleteId){
+  messages = messages.filter(message=>message.id != deleteId);
   response.status(204).json({ msg : `Message has been deleted`})  
   } else {
-    response.status(400).json({ msg : `No message with the id of ${selectedId}`})
+    response.status(400).json({ msg : `No message with the id of ${deleteId}`})
   }
 })
 
