@@ -2,6 +2,7 @@ dependencies:
   body-parser: 1.19.0
   cors: 2.8.5
   express: 4.16.4
+  express-validator: 5.3.1
   lodash: 4.17.11
 packages:
   /accepts/1.3.5:
@@ -130,6 +131,15 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
+  /express-validator/5.3.1:
+    dependencies:
+      lodash: 4.17.11
+      validator: 10.11.0
+    dev: false
+    engines:
+      node: '>= 6.0.0'
+    resolution:
+      integrity: sha512-g8xkipBF6VxHbO1+ksC7nxUU7+pWif0+OZXjZTybKJ/V0aTVhuCoHbyhIPgSYVldwQLocGExPtB2pE0DqK4jsw==
   /express/4.16.4:
     dependencies:
       accepts: 1.3.5
@@ -473,6 +483,12 @@ packages:
       node: '>= 0.4.0'
     resolution:
       integrity: sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
+  /validator/10.11.0:
+    dev: false
+    engines:
+      node: '>= 0.10'
+    resolution:
+      integrity: sha512-X/p3UZerAIsbBfN/IwahhYaBbY68EN/UQBWHtsbXGT5bfrH/p4NQzUCG1kF/rtKaNpnJ7jAu6NGTdSNtyNIXMw==
   /vary/1.1.2:
     dev: false
     engines:
@@ -483,7 +499,8 @@ registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
-  body-parser: ^1.15.2
+  body-parser: ^1.19.0
   cors: ^2.8.5
   express: ^4.16.4
+  express-validator: ^5.3.1
   lodash: ^4.17.11

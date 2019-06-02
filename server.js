@@ -15,6 +15,7 @@ const welcomeMessage = {
 }
 
 const messages = require("./messages.json");
+const { check, validationResult } = require('express-validator/check');
 
 //This array is our "data store".
 //We will start with one message in the array.
@@ -59,6 +60,7 @@ function searchMessages(messages, searchTerm){
  app.post("/messages",function(request, response){
    const newMessage =request.body;
    newMessage.id= messages.length;
+   
    newMessage.timeStamp = new Date()
    messages.push(newMessage);
  response.status(201).json(newMessage);
