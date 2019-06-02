@@ -4,9 +4,9 @@ const app = express();
 var cors = require('cors');
 app.use(express.urlencoded({ extended: false }));
 app.use(cors())
-const lodash =require("lodash")
-var bodyParser = require('body-parser');
-app.use(bodyParser.json({ type: 'application/json' }));
+//const lodash =require("lodash")
+//var bodyParser = require('body-parser');
+//app.use(bodyParser.json({ type: 'application/json' }));
 
 const welcomeMessage = {
   from: "Clement",
@@ -54,7 +54,7 @@ function searchMessages(messages, searchTerm){
   response.json(myMessage);
  });
 
-//this create a new message bnbb
+//this create a new message
  app.post("/messages",function(request, response){
    const newMessage =request.body;
    newMessage.id= messages.length;
@@ -63,7 +63,7 @@ function searchMessages(messages, searchTerm){
  response.status(201).json(newMessage);
 });
 
-
+//this update the message by id
 app.put('/messages/:id', function(request, response)  {
 
   let contactId = request.params.id;
@@ -82,16 +82,17 @@ app.put('/messages/:id', function(request, response)  {
 
   messages[index] = updateMessage;
 
-  // response.json({ message: `message ${contactId} updated.`});
+  //response.json({ message: `message ${contactId} updated.`});
   response.json(messages[index]);
 });
 
+// this delete message by id
 app.delete("/messages/:id", function(request, response){
 const deleteId = request.params.id;
 const foundDeleteId = messages.some(message=>message.id == deleteId)
 if (foundDeleteId){
   messages = messages.filter(message=>message.id != deleteId);
-  response.json({msg:})  
+  response.json("Selected message has been deleted")  
   } else {
     response.status(400).json({ msg : `No message with the id of ${deleteId}`})
   }
