@@ -57,10 +57,10 @@ function searchMessages(messages, searchTerm){
  });
 
 //this create a new message bnbb
- app.post("/messages",function(request, response){
+ app.post("/messages",[check("from").isString({min:2}),check("text").isString({min:5}) ],function(request, response){
+   const errors = validationResult(request);
    const newMessage =request.body;
    newMessage.id= messages.length;
-   
    newMessage.timeStamp = new Date()
    messages.push(newMessage);
  response.status(201).json(newMessage);
