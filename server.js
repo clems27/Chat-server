@@ -18,7 +18,7 @@ const welcomeMessage = {
 //This array is our "data store".
 //We will start with one message in the array.
 //Note: messages will be lost when Glitch restarts our server.
-const messages = [
+let messages = [
     {
         from: "Clement",
         text: "Welcome to Freeborn chat system!",
@@ -171,20 +171,31 @@ app.put('/messages/:id', function(request, response)  {
 });
 
 //this will delete message by id
-app.delete('/messages/:id', (request, response) => {
-  let contactId = request.params.id;
-  messages = messages.filter(message => {
-    return message.id !== contactId;
-    //response.json(deletedMessage)
-  });
+// app.delete('/messages/:id', (request, response) => {
+//   let contactId = request.params.id;
+//   messages = messages.filter(message => {
+//     return message.id !== contactId;
+//     //response.json(deletedMessage)
+//   });
 
-  const index = messages.indexOf(welcomeMessage);
+//   const index = messages.indexOf(welcomeMessage);
 
-  messages.splice(index, 1);
+//   messages.splice(index, 1);
 
-  response.json({ message: `message Id ${contactId} deleted.`});
+//   response.json({ message: `message Id ${contactId} deleted.`});
 
-});
+// });
+
+app.delete("/messages/:id", function(request, response){
+const selectedId = request.params.id;
+const found = messages.some(message=>message.id == selectedId)
+if (found){
+  messages = messages.filter(message=>message.id != selectedId);
+  response.status(204).json({ msg : `Message has been deleted`})  
+  } else {
+    response.status(400).json({ msg : `No message with the id of ${selectedId}`})
+  }
+})
 
 
 //this is to validate the text field
