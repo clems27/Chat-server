@@ -88,7 +88,7 @@ app.put('/messages/:id', function(request, response)  {
 
 app.delete("/messages/:id", function(request, response){
 const deleteId = request.params.id;
-const foundDeleteId = messages.find(message=>message.id == deleteId)
+const foundDeleteId = messages.some(message=>message.id == deleteId)
 if (foundDeleteId){
   messages = messages.filter(message=>message.id != deleteId);
   response.status(204).json({ msg : `Message has been deleted`})  
