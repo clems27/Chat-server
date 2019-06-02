@@ -170,22 +170,6 @@ app.put('/messages/:id', function(request, response)  {
   response.json(messages[index]);
 });
 
-//this will delete message by id
-// app.delete('/messages/:id', (request, response) => {
-//   let contactId = request.params.id;
-//   messages = messages.filter(message => {
-//     return message.id !== contactId;
-//     //response.json(deletedMessage)
-//   });
-
-//   const index = messages.indexOf(welcomeMessage);
-
-//   messages.splice(index, 1);
-
-//   response.json({ message: `message Id ${contactId} deleted.`});
-
-// });
-
 app.delete("/messages/:id", function(request, response){
 const selectedId = request.params.id;
 const found = messages.some(message=>message.id == selectedId)
