@@ -12,7 +12,7 @@
     </h2>
     <form action="/messages" method="post">
       <p>
-        Name: <input type="text" name="from" placeholder="Your Name"  id="name-input"  required/> <br />
+        Name: <input type="text" name="from" placeholder="Your Name"  id="name-input"  pattern="[a-zA-z]{2,}" required/> <br />
         <label id ="name-error" class="error" />   
       </p>
       <p>
