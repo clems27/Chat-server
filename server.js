@@ -151,23 +151,20 @@ function searchMessages(messages, searchTerm){
 app.put('/messages/:id', function(request, response)  {
 
   let contactId = request.params.id;
-  let myUpdateMessage = messages.find(message =>{
-    
-  })
 
-//   let updateMessage = messages.filter(message => {
-//     return message.id === contactId;
-//   })[0];
+  let updateMessage = messages.filter(message => {
+    return message.id ==contactId;
+  })[0];
 
-//   const index = messages.indexOf(updateMessage);
+  const index = messages.indexOf(updateMessage);
 
-//   let keys = Object.keys(request.body);
+  let keys = Object.keys(request.body);
 
-//   keys.forEach(key => {
-//     updateMessage[key] = request.body[key];
-//   });
+  keys.forEach(key => {
+    updateMessage[key] = request.body[key];
+  });
 
-//   messages[index] = updateMessage;
+  messages[index] = updateMessage;
 
   // response.json({ message: `message ${contactId} updated.`});
   response.json(messages[index]);
