@@ -37,7 +37,7 @@ function validateName(fieldId, errorId){
   const input = nameInput.value
   const isValid = nameIsValid(input)
   const message =document.getElementById(errorId)
-  const sendButton = document.getElementById("button")ee
+  const sendButton = document.getElementById("button")
   if(isValid){
     message.innerHTML = ""
     sendButton.disabled=false
