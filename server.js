@@ -14,98 +14,13 @@ const welcomeMessage = {
   id: 0
 }
 
-//const messages = require("./messages.json");
+const messages = require("./messages.json");
 
 //This array is our "data store".
 //We will start with one message in the array.
 //Note: messages will be lost when Glitch restarts our server.
-let messages = [
-    {
-        from: "Clement",
-        text: "Welcome to Freeborn chat system!",
-        id: 0,
-        timeStamp: new Date()
-    },
-    {
-        from: "mark",
-        text: "Hello",
-        id: 1,
-         timeStamp: new Date()
-    },
-    {
-        from: "clement",
-        text: "welcome",
-        id: 2,
-        timeStamp: new Date()
-    },
-    {
-        from: "mark",
-        text: "long time",
-        id: 3,
-        timeStamp: new Date()
-    },
-    {
-        from: "clement",
-        text: "yeah, indeed",
-        id: 4,
-        timeStamp: new Date()
-    },
-    {
-        from: "mark",
-        text: "real good to be hear",
-        id: 5,
-        timeStamp: new Date()
-    },
-    {
-        from: "clement",
-        text: "you looking good",
-        id: 6,
-        timeStamp: new Date()
-    },
-    {
-        from: "mark",
-        text: "Hello",
-        id: 7,
-        timeStamp: new Date()
-    },
-    {
-        from: "clement",
-        text: "welcome",
-        id: 8,
-        timeStamp: new Date()
-    },
-    {
-        from: "mark",
-        text: "long time",
-        id: 9,
-        timeStamp: new Date()
-    },
-    {
-        from: "clement",
-        text: "yeah, indeed",
-        id: 10,
-        timeStamp: new Date()
-    },
-    {
-        from: "clement",
-        text: "welcome",
-        id: 11,
-        timeStamp: new Date()
-    },
-    {
-        from: "mark",
-        text: "long time",
-        id: 12,
-        timeStamp: new Date()
-    },
-    {
-        from: "clement",
-        text: "yeah, indeed",
-        id: 13,
-        timeStamp: new Date()
-    }
-]
-console.log()
+
+console.log(JSON.stringify(messages, null, 4))
 
 app.get('/', function(request, response) {
   response.sendFile(__dirname + '/index.html');
@@ -137,7 +52,7 @@ function searchMessages(messages, searchTerm){
  app.get("/messages/:id", function(request, response){
    const messageId =request.params.id
     const myMessage =messages.filter(message=> message.id ==messageId);
-  response.send(myMessage);
+  response.json(myMessage);
  });
 
 //this create a new message
