@@ -153,7 +153,7 @@ app.put('/messages/:id', function(request, response)  {
   let contactId = request.params.id;
 
   let updateMessage = messages.filter(message => {
-    return message.id ==kcontactId;
+    return message.id ==contactId;
   })[0];
 
   const index = messages.indexOf(updateMessage);
