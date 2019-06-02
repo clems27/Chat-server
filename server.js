@@ -55,7 +55,7 @@ function searchMessages(messages, searchTerm){
   response.json(myMessage);
  });
 
-//this create a new message
+//this create a new message bnbb
  app.post("/messages",function(request, response){
    const newMessage =request.body;
    newMessage.id= messages.length;
