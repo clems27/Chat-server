@@ -173,9 +173,9 @@ app.put('/messages/:id', function(request, response)  {
 //this will delete message by id
 app.delete('/messages/:id', (request, response) => {
   let contactId = request.params.id;
-  let deletedMessage = messages.filter(message => {
-    return message.id == contactId;
-    response.json(deletedMessage)
+  messages = messages.filter(message => {
+    return message.id !== contactId;
+    //response.json(deletedMessage)
   });
 
   const index = messages.indexOf(welcomeMessage);
