@@ -14,7 +14,7 @@ const welcomeMessage = {
   id: 0
 }
 
-const messages = require("./messages.json");
+let messages = require("./messages.json");
 const { check, validationResult } = require('express-validator/check');
 
 //This array is our "data store".
@@ -91,7 +91,7 @@ const deleteId = request.params.id;
 const foundDeleteId = messages.some(message=>message.id == deleteId)
 if (foundDeleteId){
   messages = messages.filter(message=>message.id != deleteId);
-  response.status(204).json({ msg : `Message has been deleted`})  
+  response.json({msg:})  
   } else {
     response.status(400).json({ msg : `No message with the id of ${deleteId}`})
   }
