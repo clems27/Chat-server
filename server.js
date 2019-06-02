@@ -14,6 +14,7 @@ const welcomeMessage = {
   id: 0
 }
 
+//const messages = require("./messages.json");
 
 //This array is our "data store".
 //We will start with one message in the array.
@@ -104,6 +105,7 @@ let messages = [
         timeStamp: new Date()
     }
 ]
+console.log()
 
 app.get('/', function(request, response) {
   response.sendFile(__dirname + '/index.html');
