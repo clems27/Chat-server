@@ -51,7 +51,7 @@ function searchMessages(messages, searchTerm){
      response.status(200).json(myMessage);
    }
    else if(!myMessage){
-          response.status(404).json({"selected not found"});
+          response.status(404).json({ msg : `No message with the id of ${messageId}`}) ;
    }
  });
 
