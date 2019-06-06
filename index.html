@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+     <script src="scripts.js"> </script>
     <title>Welcome to CYF Chat</title>
   </head>
   <body>
@@ -12,11 +13,11 @@
     </h2>
     <form action="/messages" method="post">
       <p>
-        Name: <input type="text" name="from" placeholder="Your Name"  id="name-input" pattern="[a-zA-z]{2,}" required/> <br />
+        Name: <input type="text" name="from" placeholder="Your Name"  id="name-input"  required/> <br />
         <label id ="name-error" class="error" />   
       </p>
       <p>
-        Message: <input type="text" name="text" placeholder="The message..." id="text-input" pattern="[a-zA-z]{2,}" required/> <br />
+        Message: <input type="text" name="text" placeholder="The message..." id="text-input" required/> <br />
       <label id ="text-error" class="error" />   
       </p>
       <button type="submit" id="button">
@@ -27,37 +28,4 @@
     <a href="/messages">See all messages</a>
     
     </body>
-<!--   <script>
-  
-     document.getElementById("name-input").addEventListener('keyup', function(){validateName("name-input", "name-error")})
-    document.getElementById("text-input").addEventListener('keyup', function() {validateName("text-input", "text-error")})
-function validateName(fieldId, errorId){
-  const nameInput = document.getElementById(fieldId)
-  console.log(nameInput)
-  const input = nameInput.value
-  const isValid = nameIsValid(input)
-  const message =document.getElementById(errorId)
-  const sendButton = document.getElementById("button")
-  if(isValid){
-    message.innerHTML = ""
-    sendButton.disabled=false
-  }
-  else{
-    message.innerHTML ="Text input must be two or more letters."
-    sendButton.disabled=true
-  }
-}
-    function nameIsValid(name){
-      if(name.length < 2 ){
-        return false;
-      }
-      else{
-        return true
-}
-      const checker = /^[a-zA-Z]+$/
-      return checker.test(name)
-    }
-    
-  
-  </script> -->
 </html>
