@@ -47,7 +47,8 @@ function searchMessages(messages, searchTerm){
  app.get("/messages/:id", function(request, response){
    const messageId =request.params.id
     const myMessage =messages.filter(message=> message.id ==messageId);
-  response.json(myMessage);
+   myMessage? myMessage: "No message with id selected found"
+  response.status(200).json(myMessage);
  });
 
 //this create a new message
