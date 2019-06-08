@@ -68,25 +68,35 @@ function searchMessages(messages, searchTerm){
 
 //this update the message by id
 app.put('/messages/:id', function(request, response)  {
+   const id = parseInt(request.params.id);
 
-  let contactId = request.params.id;
+  const recipeSubmitted = request.body;
+  const existingRecipe = messages.find(message => message.id === r.id);
+  if (existingRecipe) {
+    existingRecipe = recipeSubmitted;
+    response.json(existingRecipe);
+  } else {
+    response.sendStatus(404);
+  }
 
-  let updateMessage = messages.filter(message => {
-    return message.id ==contactId;
-  })[0];
+//   let contactId = request.params.id;
 
-  const index = messages.indexOf(updateMessage);
+//   let updateMessage = messages.filter(message => {
+//     return message.id ==contactId;
+//   })[0];
 
-  let keys = Object.keys(request.body);
+//   const index = messages.indexOf(updateMessage);
 
-  keys.forEach(key => {
-    updateMessage[key] = request.body[key];
-  });
+//   let keys = Object.keys(request.body);
 
-  messages[index] = updateMessage;
+//   keys.forEach(key => {
+//     updateMessage[key] = request.body[key];
+//   });
 
-  //response.json({ message: `message ${contactId} updated.`});
-  response.json(messages[index]);
+//   messages[index] = updateMessage;
+
+//   //response.json({ message: `message ${contactId} updated.`});
+//   response.json(messages[index]);
 });
 
 // this delete message by id
