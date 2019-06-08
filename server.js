@@ -68,15 +68,15 @@ function searchMessages(messages, searchTerm){
 
 //this update the message by id
 app.put('/messages/:id', function(request, response)  {
-   const id = parseInt(request.params.id);
+   const messageId = parseInt(request.params.id);
 
-  const recipeSubmitted = request.body;
-  const existingRecipe = messages.find(message => message.id === r.id);
-  if (existingRecipe) {
-    existingRecipe = recipeSubmitted;
-    response.json(existingRecipe);
+  const messageSubmitted = request.body;
+  let existingMessage = messages.find(message => messageId === message.id);
+  if (existingMessage) {
+    existingMessage = messageSubmitted;
+    response.status(200).json(existingMessage);
   } else {
-    response.sendStatus(404);
+    response.sendStatus(404).json({msg: `Message didn't update, please try again`});
   }
 
 //   let contactId = request.params.id;
