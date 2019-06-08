@@ -72,7 +72,7 @@ app.put('/messages/:id', function(request, response)  {
 
   const messageSubmitted = request.body;
   let existingMessage = messages.find(message => messageId === message.id);
-  //console.log(existingMessage)
+ const message = message.forEach(["text", "from"])
   if (existingMessage) {
     existingMessage = messageSubmitted;
     response.status(200).json(existingMessage);
