@@ -3,6 +3,7 @@ const app = express();
 var cors = require('cors');
 app.use(express.urlencoded({ extended: false }));
 app.use(cors())
+app.use(express.json())
 
 
 const welcomeMessage = {
@@ -40,8 +41,8 @@ app.get("/messages/search", function (request, response) {
 
 function searchMessages(messages, searchTerm){
   return messages.filter(message=>{
-    return message.from.toLowerCase().includes(searchTerm) || 
-      message.text.toLowerCase().includes(searchTerm) ;
+    return message.from.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      message.text.toLowerCase().includes(searchTerm.toLowerCase()) ;
   })
 } 
   // this will get message by id only
