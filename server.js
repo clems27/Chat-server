@@ -70,34 +70,23 @@ function searchMessages(messages, searchTerm){
 app.put('/messages/:id', function(request, response)  {
    const messageId = parseInt(request.params.id);
 
-  const messageSubmitted = request.body;
-  let existingMessage = messages.find(message => messageId === message.id);
- const message = message.forEach(["text", "from"])
-  if (existingMessage) {
-    existingMessage = messageSubmitted;
-    response.status(200).json(existingMessage);
-  } else {
-    response.sendStatus(404).json({msg: `Message didn't update, please try again`});
-  }
+   let contactId = request.params.id;
 
-//   let contactId = request.params.id;
+  let updateMessage = messages.find(message => {
+    return message.id ==contactId;
+  });
 
-//   let updateMessage = messages.filter(message => {
-//     return message.id ==contactId;
-//   })[0];
+   const index = messages.indexOf(updateMessage);
+   let keys = Object.keys(request.body);
 
-//   const index = messages.indexOf(updateMessage);
+  keys.forEach(key => {
+     updateMessage[key] = request.body[key];
+   });
 
-//   let keys = Object.keys(request.body);
+   messages[index] = updateMessage;
 
-//   keys.forEach(key => {
-//     updateMessage[key] = request.body[key];
-//   });
-
-//   messages[index] = updateMessage;
-
-//   //response.json({ message: `message ${contactId} updated.`});
-//   response.json(messages[index]);
+   //response.json({ message: `message ${contactId} updated.`});
+   response.json(messages[index]);
 });
 
 // this delete message by id
