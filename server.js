@@ -35,12 +35,13 @@ app.get("/messages/latest", function(request, response){
 app.get("/messages/search", function (request, response) {
   let searchTerm = request.query.text;
   response.json(searchMessages(messages, searchTerm));
+  console.log(searchMessages(messages, searchTerm))
 });
 
 function searchMessages(messages, searchTerm){
   return messages.filter(message=>{
-    return message.from.toLowerCase().includes(searchTerm.toLowerCase()) || 
-      message.text.toLowerCase().includes(searchTerm.toLowerCase()) ;
+    return message.from.toLowerCase().includes(searchTerm) || 
+      message.text.toLowerCase().includes(searchTerm) ;
   })
 } 
   // this will get message by id only
@@ -101,4 +102,6 @@ if (foundDeleteId){
 
 
 //this is to validate the text field
-app.listen(process.env.PORT);
+const listener = app.listen(process.env.PORT, function() {
+  console.log("Your app is listening on port " + listener.address().port);
+});
